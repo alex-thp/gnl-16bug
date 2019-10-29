@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ade-temm <ade-temm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/29 17:12:36 by ade-temm          #+#    #+#             */
-/*   Updated: 2019/10/29 17:12:39 by ade-temm         ###   ########.fr       */
+/*   Updated: 2019/10/29 22:32:02 by alexandre        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,12 +49,10 @@ char    *ft_strjoin(char const *s1, char const *s2, int r)
     
     i = ft_strlen(s1);
     j = ft_strlen(s2);
-    //printf("i : %d j : %d total : %d\n", i , j, i + j);
-    if (!(result = ft_calloc(sizeof(char), (i + j + 100))))
+    if (!(result = ft_calloc(sizeof(char), (i + j + 1))))
         return (NULL);
     i = 0;
     j = 0;
-    printf("s1 = %s\n", s1);
     while (s1[i])
     {
         result[i] = s1[i];
@@ -66,27 +64,9 @@ char    *ft_strjoin(char const *s1, char const *s2, int r)
         result[i + j] = s2[j];
         j++;
     }
-    //printf("strlen(result) : %zu\n", ft_strlen(result));
-    printf("join : %s\n", result);
     return (result);
 }
-char    *ft_strdup(const char *s1)
-{
-    char    *result;
-    int     i;
-    i = 0;
-    while (s1[i])
-        i++;
-    if (!(result = ft_calloc(sizeof(char), (i + 1))))
-        return (NULL);
-    i = 0;
-    while (s1[i])
-    {
-        result[i] = s1[i];
-        i++;
-    }
-    return (result);
-}
+
 char    *ft_result(char *result)
 {
     int     i;
@@ -103,8 +83,6 @@ char    *ft_result(char *result)
         ret[i] = result[i];
         i++;
     }
-    //printf("result : %s\n", result);
-    //printf("ft_result : %s\n", ret);
     return (ret);
 }
                                                                                                                                                                                                                                                                                       
@@ -144,6 +122,5 @@ char    *ft_next(char *ret, int r)
         j++;
     }
     free(ret);
-    //printf("ft_next : %s\n", result);
     return (&result[0]);
 }
