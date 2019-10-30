@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
+/*   By: ade-temm <ade-temm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/29 17:12:36 by ade-temm          #+#    #+#             */
-/*   Updated: 2019/10/29 22:32:02 by alexandre        ###   ########.fr       */
+/*   Updated: 2019/10/30 11:55:55 by ade-temm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,14 +108,15 @@ char    *ft_next(char *ret, int r)
     if (j != -1)
         i = j + 1;
     j = ft_strlen(&ret[i]);
+    if (r == 0)
+    {
+		free(ret);
+        //result[0] = '\0';
+        return (NULL);
+    }
     if (!(result = ft_calloc(sizeof(char), (j + 1))))
         return (NULL);
     j = 0;
-    if (r == 0 && is_n(ret) == -1)
-    {
-        result[0] = '\0';
-        return (&result[0]);
-    }
     while (ret[j + i])
     {
         result[j] = ret[j + i];

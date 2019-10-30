@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
+/*   By: ade-temm <ade-temm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/29 17:13:04 by ade-temm          #+#    #+#             */
-/*   Updated: 2019/10/29 22:31:38 by alexandre        ###   ########.fr       */
+/*   Updated: 2019/10/30 12:16:56 by ade-temm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@ int             get_next_line(int fd, char **line)
     char            *buff;
     int             r;
     r = 1;
+	if (BUFFER_SIZE == 0 || !line || fd < 0)
+		return (-1);
     if (!result[fd])
         if (!(result[fd] = ft_calloc(sizeof(char), 1)))
             return (-1);
     if (!(buff = ft_calloc(sizeof(char), (BUFFER_SIZE + 1))))
-        return (-1);
-    if (fd < 0)
         return (-1);
     while (r != 0 && is_n(result[fd]) == -1)
     {
@@ -36,5 +36,5 @@ int             get_next_line(int fd, char **line)
     *line = ft_result(result[fd]);
     free(buff);
     result[fd] = ft_next(result[fd], r);
-    return ((r == 0 && is_n(result[fd]) == -1) ? 0 : 1);
+	return (r == 0 ? 0 : 1);
 }
